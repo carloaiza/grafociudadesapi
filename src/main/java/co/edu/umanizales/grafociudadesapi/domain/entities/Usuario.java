@@ -1,10 +1,11 @@
 package co.edu.umanizales.grafociudadesapi.domain.entities;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
-public class Usuario {
+public class Usuario implements Serializable {
     private int id;
     private String correo;
     private String contrasenia;
@@ -12,6 +13,7 @@ public class Usuario {
 
     @Id
     @Column(name = "id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int getId() {
         return id;
     }

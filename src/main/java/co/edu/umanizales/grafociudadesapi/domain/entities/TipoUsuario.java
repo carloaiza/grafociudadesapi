@@ -1,15 +1,15 @@
 package co.edu.umanizales.grafociudadesapi.domain.entities;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 
 @Entity
 @Table(name = "tipo_usuario", schema = "public", catalog = "grafo_ciudades")
-public class TipoUsuario {
+public class TipoUsuario implements Serializable {
     private int codigo;
     private String descripcion;
-    private List<Usuario> usuarios;
 
     @Id
     @Column(name = "codigo", nullable = false)
@@ -45,12 +45,4 @@ public class TipoUsuario {
         return Objects.hash(codigo, descripcion);
     }
 
-    @OneToMany(mappedBy = "tipoUsuario")
-    public List<Usuario> getUsuarios() {
-        return usuarios;
-    }
-
-    public void setUsuarios(List<Usuario> usuarios) {
-        this.usuarios = usuarios;
-    }
 }
